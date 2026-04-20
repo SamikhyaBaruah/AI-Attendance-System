@@ -1,0 +1,8 @@
+venv/
+env/
+.env
+__pycache__/
+*.pyc
+attendance.csv
+frontend/
+node_modules/
