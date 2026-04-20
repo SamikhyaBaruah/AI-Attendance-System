@@ -6,13 +6,17 @@ RUN apt-get update && apt-get install -y \
     libopenblas-dev \
     liblapack-dev \
     libx11-6 \
-    libgl1-mesa-glx \
+    libgl1 \
+    libglib2.0-0 \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
+ENV DLIB_USE_CUDA=0
+ENV MAKEFLAGS="-j 1"
+
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN MAX_JOBS=1 CMAKE_BUILD_PARALLEL_LEVEL=1 pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
