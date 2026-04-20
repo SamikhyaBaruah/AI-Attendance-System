@@ -24,7 +24,7 @@ app.add_middleware(
 
 attendance_system = FaceAttendanceSystem(
     registered_faces_dir=os.path.join(os.path.dirname(__file__), 'registered_faces'),
-    log_file=os.path.join(os.path.dirname(__file__), '..', 'attendance.csv')
+    log_file=os.path.join(os.path.dirname(__file__), 'attendance.csv')
 )
 
 @app.post("/api/process_frame")
